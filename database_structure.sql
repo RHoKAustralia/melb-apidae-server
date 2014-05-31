@@ -1,5 +1,3 @@
-
-
 -- --------------------------------------------------------
 
 --
@@ -24,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `comment_id` int(11) NOT NULL AUTO_INCREMENT,
   `comment` varchar(500) NOT NULL,
   PRIMARY KEY (`comment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -184,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` varchar(45) NOT NULL,
   `facebook_email` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -210,9 +208,10 @@ CREATE TABLE IF NOT EXISTS `village` (
   `village_id` int(11) NOT NULL AUTO_INCREMENT,
   `village_name` varchar(45) DEFAULT NULL,
   `country_id` int(3) DEFAULT NULL,
+  `rank` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`village_id`),
   KEY `country_id_fk` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Constraints for dumped tables
