@@ -1,4 +1,4 @@
--- --------------------------------------------------------
+- --------------------------------------------------------
 
 --
 -- Table structure for table `audio`
@@ -20,8 +20,10 @@ CREATE TABLE IF NOT EXISTS `audio` (
 
 CREATE TABLE IF NOT EXISTS `comments` (
   `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `submitted_by` int(11) NOT NULL,
   `comment` varchar(500) NOT NULL,
-  PRIMARY KEY (`comment_id`)
+  PRIMARY KEY (`comment_id`),
+  KEY `fk_submmitedby_comm` (`submitted_by`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
@@ -182,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` varchar(45) NOT NULL,
   `facebook_email` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -211,11 +213,17 @@ CREATE TABLE IF NOT EXISTS `village` (
   `rank` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`village_id`),
   KEY `country_id_fk` (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `fk_submmitedby_comm` FOREIGN KEY (`submitted_by`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `project_story`
