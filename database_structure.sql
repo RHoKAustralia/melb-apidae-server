@@ -1,4 +1,4 @@
-- --------------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `audio`
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `project_name` varchar(250) NOT NULL,
   `facebook_pageid` int(100) DEFAULT NULL,
   PRIMARY KEY (`project_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `project_comments` (
   `audio_id` int(11) DEFAULT NULL,
   `project_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`project_comment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `project_story` (
   KEY `village_id_fk` (`village_id`),
   KEY `project_id_fk` (`project_id`),
   KEY `submitted_by_fk` (`submitted_by`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
