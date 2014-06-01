@@ -63,6 +63,7 @@ CREATE TABLE IF NOT EXISTS `picture` (
 CREATE TABLE IF NOT EXISTS `project` (
   `project_id` int(11) NOT NULL AUTO_INCREMENT,
   `project_name` varchar(250) NOT NULL,
+  `project_desc` varchar(2000) DEFAULT NULL,
   `facebook_pageid` int(100) DEFAULT NULL,
   PRIMARY KEY (`project_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
