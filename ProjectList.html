@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project List</title>
+<!--
+    This template can be used for simple list view application that has a main view with list and detail view for each list item, for applications like Mail app, Messages App or Twitter app.
+-->  
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
+    
+    <link rel="stylesheet" type="text/css" href="appframework/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="appframework/icons.css" />
+    <script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
+
+    
+    <script>   
+        $.ui.autoLaunch = false; 
+        $.ui.backButtonText = "Back";
+                
+        $(document).ready(function(){
+            $.ui.launch();
+			getProjects();
+        });
+		
+	    function getProjects() {
+            $.ajax({
+                type: "GET",
+                url: "http://apidae.laurenbaird.com/data/ProjectDataJson.php",
+                dataType: "json",
+                success: function(json){
+                    $.each(json["info"], function(i, entry){
+                        $("#listview ul").append("<li><a href='#project" + entry.project_id + "'>" +entry.project_name+ "</a></li>");
+						getProjectInfo(entry.project_id);
+                    });
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+          }
+		  
+		 function getProjectInfo(projectid) {
+            $.ajax({
+                type: "GET",
+                url: "http://apidae.laurenbaird.com/data/ProjectDataJson.php?&project_id=" + projectid,
+                dataType: "json",
+                success: function(json){
+                    $.each(json["info"], function(i, entry){
+                        $("#projectdetails").append('<div class="panel" title="project' + entry.project_id + '" id="project' + entry.project_id + '" data-footer="none"><h1>'+entry.project_name+'</h1><p>'+ entry.project_desc +'</p></div>');
+						
+                    });
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+          }
+	 
+    </script>
+</head>
+<body> 
+<div id="afui">
+    <div id="content" style="">
+        
+    <!--List View Page-->
+        <div class="panel" title="Projects" id="listview" data-footer="none" selected="true">
+            <ul class="list">
+            </ul>
+        </div>
+        
+        <div id="projectdetails">
+    <!--Detail View Pages for each list items-->
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>    
